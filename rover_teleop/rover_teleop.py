@@ -188,6 +188,7 @@ def main():
                 twist.angular.y += 0.0
                 twist.angular.z += th * turn_step
             pub.publish(twist_msg)
+            stop = False
 
     except Exception as e:
         print(e)
