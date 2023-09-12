@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'rover_teleop = rover_teleop.rover_teleop:main'
         ],
     },
 )
