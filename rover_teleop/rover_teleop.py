@@ -202,7 +202,7 @@ def main():
                 twist.angular.z = -max_th
 
             pub.publish(twist_msg)
-            print("Linear Velocity: " + str(round(twist.linear.x, 2)) + "m/s Angular Velocity: " + str(round(twist.angular.z, 2)) + "rad/s")
+            print("Linear Velocity: " + str(round(twist.linear.x, 2)) + " m/s        Angular Velocity: " + str(round(twist.angular.z, 2)) + " rad/s")
             stop = False
 
     except Exception as e:
