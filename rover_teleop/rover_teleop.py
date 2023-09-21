@@ -135,6 +135,10 @@ def main():
     y = 0.0
     z = 0.0
     th = 0.0
+    max_x = 1.0
+    max_y = 1.0
+    max_z = 1.0
+    max_th = 1.0
     status = 0.0
     stop = False
 
@@ -182,12 +186,23 @@ def main():
                 twist.angular.z = 0.0
             else:
                 twist.linear.x += x * speed_step
-                twist.linear.y += y * speed_step
-                twist.linear.z += z * speed_step
+                twist.linear.y += 0.0
+                twist.linear.z += 0.0
                 twist.angular.x += 0.0
                 twist.angular.y += 0.0
                 twist.angular.z += th * turn_step
+
+            if twist.linear.x > max_x:
+                twist.linear.x = max_x
+            if twist.linear.x < -max_x:
+                twist.linear.x = -max_x
+            if twist.angular.z > max_th:
+                twist.angular.z = max_th
+            if twist.angular.z < -max_th:
+                twist.angular.z = -max_th
+
             pub.publish(twist_msg)
+            print("Linear Velocity: " + str(round(twist.linear.x, 2)) + " Angular Velocity: " + str(round(twist.angular.z, 2)))
             stop = False
 
     except Exception as e:
