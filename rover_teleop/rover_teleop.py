@@ -129,8 +129,8 @@ def main():
     spinner = threading.Thread(target=rclpy.spin, args=(node,))
     spinner.start()
 
-    speed_step = 0.1
-    turn_step = 0.1
+    speed_step = 0.01
+    turn_step = 0.01
     x = 0.0
     y = 0.0
     z = 0.0
@@ -202,7 +202,7 @@ def main():
                 twist.angular.z = -max_th
 
             pub.publish(twist_msg)
-            print("Linear Velocity: " + str(round(twist.linear.x, 2)) + " Angular Velocity: " + str(round(twist.angular.z, 2)))
+            print("Linear Velocity: " + str(round(twist.linear.x, 2)) + "m/s Angular Velocity: " + str(round(twist.angular.z, 2)) + "rad/s")
             stop = False
 
     except Exception as e:
